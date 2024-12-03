@@ -1,5 +1,4 @@
 import random
-from random import choice
 
 first = 'Мама мыла раму'
 second = 'Рамена мало было'
@@ -10,12 +9,15 @@ print(list(my_func))
 
 def get_advanced_writer(file_name):
     def write_everything(*data_set):
-        # write = get_advanced_writer('example.txt')
-        # write('Это строчка', ['А', 'это', 'уже', 'число', 5, 'в', 'списке'])
-        for file in file_name:
-            with open(file, encoding='utf-8') as files:
+        with open(file_name, 'a', encoding='utf-8') as file:
+            for data in data_set:
+                file.write(str(data) + ' ' + '\n')
+    return write_everything
 
-    return write_everything()
+
+write = get_advanced_writer('example.txt')
+write('Это строчка', ['А', 'это', 'уже', 'число', 5, 'в', 'списке'])
+
 
 class MysticBall:
     def __init__(self, *words):
